@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "melon1",
+  "compatibility_date": "2025-09-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "exclude": [
+      "node_modules/**",
+      "package.json",
+      "package-lock.json",
+      "wrangler.jsonc",
+      ".*"   // hidden files like .gitignore
+    ]
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
