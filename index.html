@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PineappleCode - Portfolio</title>
+    <title>PineappleCode - Portfolio & Shop</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">PineappleCode</div>
-            <ul class="nav-menu">
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-list">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About Me</a></li>
-                <li><a href="#staff" class="nav-link">Staff Experience</a></li>
+                <li><a href="#shop" class="nav-link">Plugins & Hiring</a></li> <li><a href="#staff" class="nav-link">Staff Experience</a></li>
                 <li><a href="#projects" class="nav-link">My Projects</a></li>
-                <li><a href="#skills" class="nav-link">What I Code</a></li>
                 <li><a href="#contact" class="nav-link">Contact Me</a></li>
             </ul>
         </div>
@@ -26,6 +32,43 @@
         <div class="container">
             <div class="fade-in-text">
                 <h1>ʜᴇʟʟᴏ, ᴍʏ ɴᴀᴍᴇ ɪs <span class="highlight">PineappleCode!</span></h1>
+                <p style="margin-top:1rem; opacity:0.8;">Developer • Architect • Community Leader</p>
+            </div>
+        </div>
+    </section>
+
+<section id="shop" class="section">
+        <div class="container">
+            <h2 class="section-title">Store & Commissions</h2>
+            <p style="text-align: center; margin-bottom: 3rem;">All payments are handled securely via <span class="highlight">PayPal</span>. Please DM on Discord after paying!</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 style="color: var(--p-yellow);">Small Plugin</h3>
+                    <p class="highlight">$2.00</p>
+                    <p>Perfect for simple commands, basic chat features, or lightweight utilities for your server.</p>
+                    <a href="https://www.paypal.com/paypalme/pineapplecode153/2" target="_blank" class="buy-btn">Order Small</a>
+                </div>
+
+                <div class="project-card">
+                    <h3 style="color: var(--p-green);">Big Plugin</h3>
+                    <p class="highlight">$4.00</p>
+                    <p>Comprehensive systems including custom GUIs, complex logic, and data storage solutions.</p>
+                    <a href="https://www.paypal.com/paypalme/pineapplecode153/4" target="_blank" class="buy-btn">Order Big</a>
+                </div>
+
+                <div class="project-card">
+                    <h3 style="color: #7289da;">Discord Bot</h3>
+                    <p class="highlight">$15.00-$20.00 /mo</p>
+                    <p>Full-time bot development support, bug fixes, and constant updates for your discord bot.</p>
+                    <a href="https://www.paypal.com/paypalme/pineapplecode153/25" target="_blank" class="buy-btn">Hire Me</a>
+                </div>
+                <div class="project-card">
+                    <h3 style="color: #7289da;">Server Discord</h3>
+                    <p class="highlight">$5.00 /mo</p>
+                    <p>Full-time development support, bug fixes, and constant updates for your network.</p>
+                    <a href="https://www.paypal.com/paypalme/pineapplecode153/25" target="_blank" class="buy-btn">Hire Me</a>
+                </div>    
             </div>
         </div>
     </section>
@@ -35,27 +78,16 @@
             <h2 class="section-title">About Me</h2>
             <div class="content">
                 <p class="about-text">
-                    I am <span class="highlight">PineappleCode</span>, a developer and community leader dedicated to building immersive digital experiences. With a focus on <span class="highlight">Minecraft infrastructure</span> and <span class="highlight">automation</span>, I bridge the gap between complex code and player-friendly gameplay.
+                    I am <span class="highlight">PineappleCode</span>, a developer dedicated to building immersive digital experiences. With a focus on <span class="highlight">Minecraft infrastructure</span>, I bridge the gap between complex code and player-friendly gameplay.
                 </p>
-                <p class="about-text">
-                    My journey started with curiosity, which evolved into a deep dive into <span class="highlight">NodeJS, Skript, and Discord API development</span>. I architect systems—from custom economy plugins to high-performance Discord bots.
-                </p>
-                <p class="about-text">
-                    As a <span class="highlight">Staff Member and Owner</span> of multiple projects, I’ve mastered the art of server management and team coordination. I believe the best projects come from a mix of <span class="highlight">clean logic</span> and <span class="highlight">creative thinking</span>.
-                </p>
-
                 <div class="projects-grid" style="margin-top: 2rem;">
                     <div class="skill-card">
                         <h3 style="color: var(--p-yellow);">Current Goal</h3>
-                        <p>Launching ReefSMP and perfecting my Java plugin development.</p>
+                        <p>Perfecting my Java plugin development and scaling TotemRush.</p>
                     </div>
                     <div class="skill-card">
                         <h3 style="color: var(--p-green);">Philosophy</h3>
                         <p>"Write code that is as sweet as a pineapple but as tough as the skin."</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3 style="color: var(--p-yellow);">Interests</h3>
-                        <p>System Architecture, UI/UX Design, and Community Building.</p>
                     </div>
                 </div>
             </div>
@@ -66,26 +98,11 @@
         <div class="container">
             <h2 class="section-title">Staff Experience</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>ReefSMP</h3>
-                    <p class="highlight">Owner</p>
-                    <p>Managing server operations, development, and community growth for an upcoming crystal shop survival experience.</p>
-                </div>
-                <div class="project-card">
-                    <h3>TotemRush</h3>
-                    <p class="highlight">Co-Owner / Lead Dev</p>
-                    <p>Focused on backend Skripting and plugin management to ensure a smooth player experience.</p>
-                </div>
-                <div class="project-card">
-                    <h3>TrimSMP</h3>
-                    <p class="highlight">Lead Admin</p>
-                    <p>Handled community moderation, technical support, and maintenance for Cracked, Java, and Bedrock players.</p>
-                </div>
-                <div class="project-card">
-                    <h3>CookieBox</h3>
-                    <p class="highlight">Developer</p>
-                    <p>Implemented custom features and economy systems for the shop survival community.</p>
-                </div>
+                <div class="project-card"><h3 style="color: #D45A00;">TotemRush</h3><p class="highlight">Owner</p><p>Operations & Owner.</p></div>
+                <div class="project-card"><h3 style="color: #FFD700;">TrimSMP</h3><p class="highlight">Owner</p><p>Operations & Owner.</p></div>
+                <div class="project-card"><h3 style="color: #C9FFA2;">ReefSMP</h3><p class="highlight">Owner</p><p>Operations & Owner.</p></div>
+                <div class="project-card"><h3 style="color: #FF033E;">CoreCrash</h3><p class="highlight">Dev</p><p>Operations & Dev.</p></div>
+                <div class="project-card"><h3 style="color: #E0115F;">RubySMP</h3><p class="highlight">Senior Moderator</p><p>Support & Moderation.</p></div>
             </div>
         </div>
     </section>
@@ -94,38 +111,9 @@
         <div class="container">
             <h2 class="section-title">My Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>(CLOSED) TrimSMP</h3>
-                    <p>A fun and cool Minecraft server for Cracked, Bedrock, and Java players.</p>
-                </div>
-                <div class="project-card">
-                    <h3>(CLOSED) ReefSMP</h3>
-                    <p>Previous iteration of the Reef community project. Currently in redevelopment.</p>
-                </div>
-                <div class="project-card">
-                    <h3>TotemRush</h3>
-                    <p><span class="highlight">RE-OPENING</span>: A shop survival server currently undergoing private development for a major comeback.</p>
-                </div>
-                <div class="project-card">
-                    <h3>(CLOSED) CookieBox</h3>
-                    <p>A specialized shop survival server focused on unique economy mechanics.</p>
-                </div>
-                <div class="project-card">
-                    <h3>(CLOSED) SeaSMP</h3>
-                    <p>A collaborative shop survival project focused on community-driven gameplay.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">What I Code On</h2>
-            <div class="skills-grid">
-                <div class="skill-card"><h3>NodeJS</h3></div>
-                <div class="skill-card"><h3>Skript</h3></div>
-                <div class="skill-card"><h3>Discord Bots</h3></div>
-                <div class="skill-card"><h3>Minecraft Plugins</h3></div>
+                <div class="project-card"><h3>TotemRush</h3><p><span class="highlight">RE-OPENING</span>: Private development phase.</p></div>
+                <div class="project-card"><h3>CookieBox</h3><p>(CLOSED) Shop survival focus.</p></div>
+                <div class="project-card"><h3>ReefSMP</h3><p>(CLOSED) Shop survival focus.</p></div>
             </div>
         </div>
     </section>
@@ -133,18 +121,14 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Contact Me</h2>
-            <div class="contact-content">
-                <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
-                    <div class="skill-card" style="flex: 1; min-width: 280px; max-width: 400px;">
-                        <h3 style="color: #7289da;">Discord</h3>
-                        <p class="highlight">@PineappleCode</p>
-                        <p>DM me for developer work or staff inquiries.</p>
-                    </div>
-                    <div class="skill-card" style="flex: 1; min-width: 280px; max-width: 400px;">
-                        <h3 style="color: var(--p-yellow);">Email</h3>
-                        <p class="highlight">PineappleCode@totemrush.org</p>
-                        <p>For formal inquiries and partnerships.</p>
-                    </div>
+            <div class="contact-flex">
+                <div class="skill-card contact-item">
+                    <h3 style="color: #7289da;">Discord</h3>
+                    <p class="highlight">@PineappleCode</p>
+                </div>
+                <div class="skill-card contact-item">
+                    <h3 style="color: #D45A00;">Email</h3>
+                    <p class="highlight">PineappleCode@totemrush.net</p>
                 </div>
             </div>
         </div>
