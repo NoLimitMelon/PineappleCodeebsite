@@ -139,32 +139,41 @@
         <div class="container">
             <h2 class="section-title">Client Reviews</h2>
             
-            <div id="review-display-area" class="projects-grid"></div>
-
-            <div class="review-form-container" style="max-width: 800px; margin: 4rem auto 0; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px;">
-                <h3 style="text-align: center; margin-bottom: 2rem;">Submit Your Review</h3>
-                
-                <div class="contact-form">
-                    <div class="form-group" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-                        <input type="text" id="revServer" placeholder="Server Name" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
-                    </div>
-                    <div class="form-group" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-                        <input type="text" id="revIP" placeholder="Server IP (Optional)" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
-                        <select id="revRating" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
-                            <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
-                            <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
-                            <option value="⭐⭐⭐">⭐⭐⭐</option>
-                            <option value="⭐⭐">⭐⭐</option>
-                            <option value="⭐">⭐</option>
-                        </select>
-                    </div>
-                    <textarea id="revMessage" placeholder="Describe your experience..." rows="4" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px; margin-bottom: 1rem; font-family: inherit;"></textarea>
-                    <button type="button" onclick="postReview()" class="buy-btn" style="width: 100%; border: none; cursor: pointer; padding: 1rem; background: #FFD700; color: black; font-weight: bold; border-radius: 8px;">Post Review</button>
+            <div id="review-display-area" class="projects-grid">
+                <div class="project-card review-card" style="border-left: 4px solid #FFD700;">
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"PineappleCode is fast and reliable. The code is very clean!"</p>
+                    <p class="highlight">- MysticSMP (play.mysticsmp.com)</p>
                 </div>
             </div>
 
+            <div class="review-form-container" style="max-width: 800px; margin: 4rem auto 0; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px;">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Submit Your Review</h3>
+                <p style="text-align: center; opacity: 0.7; margin-bottom: 2rem; font-size: 0.9rem;">Your review will be sent to me for approval!</p>
+                
+                <form id="reviewForm" action="https://formspree.io/f/mvgbvngb" method="POST" class="contact-form">
+                    <div class="form-group" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                        <input type="text" name="ServerName" placeholder="Server Name" required style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
+                    </div>
+                    <div class="form-group" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                        <input type="text" name="IP" placeholder="Server IP (Optional)" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px; flex: 2;">
+                        <select name="Rating" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px; flex: 1;">
+                            <option value="5 Stars">⭐⭐⭐⭐⭐</option>
+                            <option value="4 Stars">⭐⭐⭐⭐</option>
+                            <option value="3 Stars">⭐⭐⭐</option>
+                            <option value="2 Stars">⭐⭐</option>
+                            <option value="1 Star">⭐</option>
+                        </select>
+                    </div>
+                    <textarea name="Message" placeholder="Describe your experience..." rows="4" required style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px; margin-bottom: 1rem; font-family: inherit;"></textarea>
+                    
+                    <button type="submit" id="submitBtn" class="buy-btn" style="width: 100%; border: none; cursor: pointer; padding: 1rem; background: #FFD700; color: black; font-weight: bold; border-radius: 8px;">Post Review</button>
+                    <p id="form-status" style="text-align: center; margin-top: 1rem; display: none; color: #FFD700;"></p>
+                </form>
+            </div>
+
             <div style="text-align: center; margin-top: 3rem;">
-                <button onclick="openAdmin()" style="background: transparent; border: none; color: #444; cursor: pointer; font-size: 0.8rem;">Admin Login</button>
+                <button onclick="openAdmin()" style="background: transparent; border: none; color: #333; cursor: pointer; font-size: 0.7rem;">Admin Access</button>
             </div>
         </div>
     </section>
