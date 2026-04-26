@@ -1,4 +1,4 @@
-const ADMIN_PASSWORD = "Eric1613!"; // CHANGE THIS PASSWORD
+const ADMIN_PASSWORD = "GMS1613!"; // CHANGE THIS PASSWORD
 
 const menuToggle = document.querySelector('#mobile-menu');
 const navMenu = document.querySelector('#nav-list');
