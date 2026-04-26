@@ -21,8 +21,10 @@
             <ul class="nav-menu" id="nav-list">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About Me</a></li>
-                <li><a href="#shop" class="nav-link">Plugins & Hiring</a></li> <li><a href="#staff" class="nav-link">Staff Experience</a></li>
+                <li><a href="#shop" class="nav-link">Plugins & Hiring</a></li> 
+                <li><a href="#staff" class="nav-link">Staff Experience</a></li>
                 <li><a href="#projects" class="nav-link">My Projects</a></li>
+                <li><a href="#reviews" class="nav-link">Reviews</a></li>
                 <li><a href="#contact" class="nav-link">Contact Me</a></li>
             </ul>
         </div>
@@ -37,7 +39,7 @@
         </div>
     </section>
 
-<section id="shop" class="section">
+    <section id="shop" class="section">
         <div class="container">
             <h2 class="section-title">Store & Commissions</h2>
             <p style="text-align: center; margin-bottom: 3rem;">All payments are handled securely via <span class="highlight">PayPal</span>. Please DM on Discord after paying!</p>
@@ -63,24 +65,27 @@
                     <p>Full-time bot development support, bug fixes, and constant updates for your discord bot.</p>
                     <a href="https://www.paypal.com/paypalme/pineapplecode153/5" target="_blank" class="buy-btn">Hire Me</a>
                 </div>
+
                 <div class="project-card">
                     <h3 style="color: #7289da;">Server Full Development</h3>
                     <p class="highlight">$20.00 /mo</p>
                     <p>Full-time development support, bug fixes, and constant updates for your network.</p>
                     <a href="https://www.paypal.com/paypalme/pineapplecode153/20" target="_blank" class="buy-btn">Hire Me</a>
-                </div>    
+                </div>
+
                 <div class="project-card">
                     <h3 style="color: #7289da;">Server Development</h3>
                     <p class="highlight">$10.00 /mo</p>
                     <p>Full-time development support, bug fixes, and constant updates for your network.</p>
                     <a href="https://www.paypal.com/paypalme/pineapplecode153/10" target="_blank" class="buy-btn">Hire Me</a>
-                </div>      
+                </div>
+
                 <div class="project-card">
                     <h3 style="color: #7289da;">Server Development One Time Payment</h3>
                     <p class="highlight">$25.00</p>
                     <p>Full-time development support, bug fixes, and constant updates for your network.</p>
                     <a href="https://www.paypal.com/paypalme/pineapplecode153/25" target="_blank" class="buy-btn">Hire Me</a>
-                </div>     
+                </div>
             </div>
         </div>
     </section>
@@ -129,6 +134,48 @@
             </div>
         </div>
     </section>
+
+    <section id="reviews" class="section">
+        <div class="container">
+            <h2 class="section-title">Client Reviews</h2>
+            
+            <div id="review-display-area" class="projects-grid"></div>
+
+            <div class="review-form-container" style="max-width: 800px; margin: 4rem auto 0; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px;">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Submit Your Review</h3>
+                
+                <div class="contact-form">
+                    <div class="form-group" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                        <input type="text" id="revName" placeholder="Your Name" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
+                        <input type="text" id="revServer" placeholder="Server Name" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
+                    </div>
+                    <div class="form-group" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                        <input type="text" id="revIP" placeholder="Server IP (Optional)" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
+                        <select id="revRating" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px;">
+                            <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                            <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                            <option value="⭐⭐⭐">⭐⭐⭐</option>
+                            <option value="⭐⭐">⭐⭐</option>
+                            <option value="⭐">⭐</option>
+                        </select>
+                    </div>
+                    <textarea id="revMessage" placeholder="Describe your experience..." rows="4" style="width: 100%; padding: 0.8rem; background: #111; border: 1px solid #333; color: white; border-radius: 8px; margin-bottom: 1rem; font-family: inherit;"></textarea>
+                    <button type="button" onclick="postReview()" class="buy-btn" style="width: 100%; border: none; cursor: pointer; padding: 1rem; background: #FFD700; color: black; font-weight: bold; border-radius: 8px;">Post Review</button>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button onclick="openAdmin()" style="background: transparent; border: none; color: #444; cursor: pointer; font-size: 0.8rem;">Admin Login</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="adminPanel" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1a1a; padding: 2.5rem; border-radius: 15px; border: 2px solid #FFD700; z-index: 2000; width: 320px; box-shadow: 0 0 30px rgba(0,0,0,0.8);">
+        <h3 style="margin-bottom: 1.5rem; color: #FFD700; text-align: center;">Admin Access</h3>
+        <input type="password" id="adminPass" placeholder="Enter Password" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; background: #000; border: 1px solid #333; color: white; border-radius: 5px;">
+        <button onclick="checkAdmin()" class="buy-btn" style="width: 100%; border: none; padding: 0.8rem; cursor: pointer; border-radius: 5px;">Login</button>
+        <button onclick="closeAdmin()" style="width: 100%; background: transparent; color: #888; border: none; margin-top: 1rem; cursor: pointer; font-size: 0.9rem;">Cancel</button>
+    </div>
 
     <section id="contact" class="section">
         <div class="container">
