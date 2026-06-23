@@ -3,707 +3,836 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NoLimitMelon — Portfolio</title>
-  <meta name="description" content="Portfolio of NoLimitMelon, premier Minecraft engineer, systems developer, and network owner." />
+  <title>NoLimitMelon — Absolute Infinite Nexus</title>
+  <meta name="description" content="The definitive, hyper-optimized production interface for NoLimitMelon. Elite Minecraft systems architecture, network oversight, and custom logic deployment." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #050508;
-      --panel: rgba(13, 13, 22, 0.4);
-      --panel-hover: rgba(20, 20, 35, 0.6);
-      --border: rgba(255, 255, 255, 0.03);
-      --border-hover: rgba(168, 85, 247, 0.25);
-      --text: #f8fafc;
-      --muted: #64748b;
+      --bg-core: #010103;
+      --surface-glass: rgba(6, 6, 12, 0.45);
+      --surface-glass-hover: rgba(12, 12, 24, 0.7);
+      --border-flux: rgba(255, 255, 255, 0.015);
+      --border-flux-hover: rgba(168, 85, 247, 0.55);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #475569;
       
-      /* Accent Matrix */
-      --purple: #a855f7;
-      --purple-glow: rgba(168, 85, 247, 0.4);
-      --orange: #f97316;
-      --orange-glow: rgba(249, 115, 22, 0.4);
-      --green: #10b981;
-      --green-glow: rgba(16, 185, 129, 0.4);
+      /* Pure Luminescent Spectrum */
+      --neon-purple: #a855f7;
+      --neon-purple-glow: rgba(168, 85, 247, 0.6);
+      --neon-orange: #f97316;
+      --neon-orange-glow: rgba(249, 115, 22, 0.6);
+      --neon-emerald: #10b981;
+      --neon-emerald-glow: rgba(16, 185, 129, 0.65);
+      --neon-blue: #3b82f6;
+      --neon-blue-glow: rgba(59, 130, 246, 0.5);
       
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --font-display: 'Space Grotesk', sans-serif;
-      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --radius-ellipse: 48px;
+      --radius-card: 28px;
     }
 
-    html { scroll-behavior: smooth; background: var(--bg); }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 16px;
-      line-height: 1.6;
+    html, body {
+      background: var(--bg-core);
+      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
-      position: relative;
+      perspective: 1500px;
     }
 
-    /* Cinematic Cyber-Grid & Ambient Orbs */
-    .bg-system {
+    /* Infinite Quantum Canvas & Animated Particle Grids */
+    .quantum-canvas {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      overflow: hidden;
     }
 
-    .bg-system::before {
+    .quantum-canvas::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
+        radial-gradient(circle at 50% -40%, rgba(168, 85, 247, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(249, 115, 22, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 110%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+      filter: blur(60px);
     }
 
-    .orb {
+    .digital-mesh {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.12;
-      mix-blend-mode: screen;
-      animation: floatOrb 12s ease-in-out infinite alternate;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(circle at 50% 50%, black 30%, rgba(0,0,0,0.15) 80%, transparent);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, rgba(0,0,0,0.15) 80%, transparent);
     }
 
-    .orb-1 {
-      top: -10%;
-      left: 20%;
-      width: 500px;
-      height: 500px;
-      background: var(--purple);
-    }
-
-    .orb-2 {
-      top: 40%;
-      right: -10%;
-      width: 400px;
-      height: 400px;
-      background: var(--orange);
-      animation-delay: -4s;
-    }
-
-    @keyframes floatOrb {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(40px) scale(1.15); }
-    }
-
-    /* ---- WRAPPER ---- */
-    .container {
-      max-width: 1000px;
+    /* ---- VIEWPORT CONTAINER ---- */
+    .viewport {
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 40px;
       position: relative;
       z-index: 1;
     }
 
-    /* ---- NEO-HERO ---- */
-    .hero {
-      padding: 140px 0 80px;
-      text-align: center;
-      position: relative;
+    /* ---- NAVIGATION LAYER ---- */
+    .global-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0;
+      margin-bottom: 60px;
     }
 
-    .badge-hub {
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--neon-purple); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* ---- HERO LAYER ---- */
+    .hero-panel {
+      padding: 100px 0 120px;
+      text-align: center;
+    }
+
+    .system-terminal-status {
       display: inline-flex;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 6px 6px 6px 16px;
-      border-radius: 100px;
       align-items: center;
       gap: 12px;
-      margin-bottom: 32px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 24px;
+      border-radius: 100px;
+      margin-bottom: 48px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
     }
 
-    .badge-hub span {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
+    .status-node {
+      width: 8px;
+      height: 8px;
+      background: var(--neon-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 14px var(--neon-emerald-glow);
+      animation: broadcast 1.6s infinite;
     }
 
-    .badge-hub .pulse-tag {
-      background: linear-gradient(135deg, var(--purple), #c084fc);
-      color: #fff;
+    @keyframes broadcast {
+      0% { transform: scale(0.8); opacity: 0.4; }
+      50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 22px var(--neon-emerald); }
+      100% { transform: scale(0.8); opacity: 0.4; }
+    }
+
+    .status-string {
       font-size: 11px;
       font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 100px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 12px var(--purple-glow);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e2e8f0;
     }
 
-    .badge-hub .pulse-tag::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #fff;
-      border-radius: 50%;
-      animation: pulseActive 1.5s infinite;
+    .main-signature {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(72px, 14vw, 140px);
+      font-weight: 800;
+      line-height: 0.8;
+      letter-spacing: -7px;
+      margin-bottom: 40px;
     }
 
-    @keyframes pulseActive {
-      0% { transform: scale(0.8); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(0.8); opacity: 0.5; }
+    .main-signature .base-text {
+      color: #ffffff;
+      text-shadow: 0 0 80px rgba(255,255,255,0.1);
     }
 
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(54px, 9vw, 92px);
-      font-weight: 700;
-      line-height: 0.95;
-      letter-spacing: -3px;
-      margin-bottom: 24px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.7) 100%);
+    .main-signature .glowing-core {
+      background: linear-gradient(135deg, var(--neon-purple) 0%, #f5f3ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-title .accent {
-      background: linear-gradient(135deg, var(--purple) 0%, #d8b4fe 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      position: relative;
+    .field-descriptor {
+      font-size: 26px;
+      color: var(--text-secondary);
+      max-width: 740px;
+      margin: 0 auto 24px;
+      font-weight: 400;
+      line-height: 1.4;
     }
 
-    .hero-desc {
-      font-size: 20px;
-      color: #94a3b8;
-      max-width: 540px;
+    .philosophy-subline {
+      font-size: 15px;
+      color: #64748b;
+      max-width: 580px;
       margin: 0 auto;
-      font-weight: 500;
+      font-style: italic;
     }
 
-    /* ---- METRICS ---- */
-    .metrics-bar {
+    /* ---- METRICS MATRIX HUB ---- */
+    .cluster-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      margin-bottom: 60px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 120px;
+    }
+
+    .hub-node {
+      background: var(--surface-glass);
+      border: 1px solid var(--border-flux);
+      border-radius: 28px;
+      padding: 40px 28px;
       text-align: center;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    }
+    
+    .hub-node:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.06);
     }
 
-    .metric-item border-right {
-      border-right: 1px solid rgba(255,255,255,0.05);
+    .hub-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(180deg, #fff, rgba(255,255,255,0.2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .metric-val {
-      font-family: var(--font-display);
-      font-size: 28px;
+    .hub-number.colored {
+      background: linear-gradient(135deg, var(--neon-purple), #d8b4fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hub-meta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #475569;
+      margin-top: 12px;
       font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
     }
-    .metric-val span { color: var(--purple); }
 
-    .metric-lbl {
-      font-size: 12px;
+    /* ---- MODULE LAYOUT STRUCTS ---- */
+    .module-wrapper {
+      padding: 80px 0;
+    }
+
+    .module-header {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--muted);
-      margin-top: 4px;
-      font-weight: 600;
-    }
-
-    /* ---- SECTIONS ---- */
-    .section {
-      padding: 48px 0;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      color: var(--muted);
-      margin-bottom: 32px;
+      letter-spacing: 6px;
+      color: #475569;
+      margin-bottom: 56px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 28px;
     }
 
-    .section-title::after {
+    .module-header::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
+      background: linear-gradient(90deg, rgba(255,255,255,0.04), transparent);
     }
 
-    /* ---- SERVER ARCHITECTURE GRID ---- */
-    .showcase-grid {
+    /* ---- PIPELINE / SKILLS CAPABILITIES ARCHITECTURE ---- */
+    .pipeline-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
     }
 
-    .card-panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: all 0.4s cubic-bezier(0.15, 0.85, 0.45, 1);
-    }
-
-    .card-panel:hover {
-      background: var(--panel-hover);
-      border-color: var(--border-hover);
-      transform: translateY(-6px);
-    }
-
-    /* Dynamic Border Glowing Triggers */
-    .card-panel.owner-type:hover { box-shadow: 0 20px 40px -15px var(--purple-glow); }
-    .card-panel.dev-type:hover { box-shadow: 0 20px 40px -15px var(--orange-glow); }
-
-    .card-header-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .server-icon-frame {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      color: #fff;
-    }
-    .owner-type .server-icon-frame { color: #c084fc; background: rgba(168, 85, 247, 0.05); }
-    .dev-type .server-icon-frame { color: #f97316; background: rgba(249, 115, 22, 0.05); }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 100px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .status-pill.active {
-      background: rgba(16, 185, 129, 0.08);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.15);
-    }
-    .status-pill.active::before {
-      content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 8px var(--green);
-    }
-
-    .status-pill.inactive {
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--muted);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .card-body-title {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .card-body-role {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 2px;
-      font-weight: 500;
-    }
-
-    /* ---- PREMIUM PRICING MODULE ---- */
-    .pricing-matrix {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 20px;
-    }
-
-    .price-node {
+    .pipeline-card {
+      background: rgba(255, 255, 255, 0.005);
       border: 1px solid rgba(255, 255, 255, 0.02);
+      border-radius: 24px;
+      padding: 36px;
     }
 
-    .price-node .tier-scope {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
+    .pipeline-icon {
+      color: var(--neon-blue);
+      margin-bottom: 24px;
+      display: inline-block;
     }
-    
-    .p-purple .tier-scope { color: #c084fc; }
-    .p-orange .tier-scope { color: #fb923c; }
+    .pipeline-card:nth-child(2) .pipeline-icon { color: var(--neon-purple); }
+    .pipeline-card:nth-child(3) .pipeline-icon { color: var(--neon-orange); }
 
-    .price-node .amt {
-      font-family: var(--font-display);
-      font-size: 42px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1;
-    }
-    .price-node .amt span {
-      font-size: 16px;
-      color: var(--muted);
-      font-family: var(--font-sans);
-      font-weight: 500;
-    }
-
-    .price-node .desc {
-      font-size: 13px;
-      color: #94a3b8;
-      margin-top: 12px;
-      font-weight: 500;
-    }
-
-    /* ---- MUSIC VAULT ---- */
-    .stream-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .stream-player {
-      border-radius: var(--radius-md);
-      background: #09090e;
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-    }
-
-    .stream-player:hover {
-      border-color: rgba(255, 255, 255, 0.08);
-      background: #0d0d14;
-    }
-
-    /* ---- CONVERSION CTA ARCHITECT ---- */
-    .cta-container {
-      padding: 80px 0 120px;
-    }
-
-    .ultra-card {
-      background: linear-gradient(135deg, rgba(15, 15, 26, 0.6) 0%, rgba(7, 7, 12, 0.8) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      border-radius: var(--radius-lg);
-      padding: 60px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 40px 80px -30px rgba(0,0,0,0.7);
-    }
-
-    .ultra-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 60%);
-    }
-
-    .cta-icon-wrapper {
-      width: 64px;
-      height: 64px;
-      background: rgba(168, 85, 247, 0.05);
-      border: 1px solid rgba(168, 85, 247, 0.15);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-      color: var(--purple);
-      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.1);
-    }
-
-    .cta-title {
-      font-family: var(--font-display);
-      font-size: 32px;
+    .pipeline-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
       font-weight: 700;
       color: #fff;
       margin-bottom: 12px;
     }
 
-    .cta-text {
-      font-size: 15px;
-      color: #94a3b8;
-      max-width: 500px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
+    .pipeline-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
 
-    .action-gate {
-      display: inline-flex;
+    /* HIGH-PERFORMANCE DEPLOYMENT CARDS */
+    .network-matrix {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .nexus-card {
+      background: var(--surface-glass);
+      border: 1px solid var(--border-flux);
+      border-radius: var(--radius-card);
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nexus-card:hover {
+      background: var(--surface-glass-hover);
+      border-color: var(--border-flux-hover);
+      transform: scale(1.03) translateY(-8px);
+    }
+
+    .nexus-card.owner-variant:hover { box-shadow: 0 44px 90px -25px var(--neon-purple-glow); }
+    .nexus-card.dev-variant:hover { box-shadow: 0 44px 90px -25px var(--neon-orange-glow); }
+
+    .nexus-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .nexus-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      background: linear-gradient(135deg, #005691 0%, #003b66 100%);
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .owner-variant .nexus-avatar { color: var(--neon-purple); background: rgba(168, 85, 247, 0.06); }
+    .dev-variant .nexus-avatar { color: var(--neon-orange); background: rgba(249, 115, 22, 0.06); }
+
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .live-indicator.online {
+      background: rgba(16, 185, 129, 0.08);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.18);
+    }
+    .live-indicator.online::before {
+      content: ''; width: 6px; height: 6px; background: var(--neon-emerald); border-radius: 50%; box-shadow: 0 0 12px var(--neon-emerald);
+    }
+
+    .live-indicator.offline {
+      background: rgba(255, 255, 255, 0.02);
+      color: #475569;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nexus-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
       color: #ffffff;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 16px 36px;
-      border-radius: 14px;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 8px 24px rgba(0, 59, 102, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .action-gate:hover {
-      background: linear-gradient(135deg, #0066aa 0%, #004777 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0, 59, 102, 0.5);
-    }
-
-    /* ---- FOOTER ---- */
-    .master-footer {
-      text-align: center;
-      padding: 40px;
-      font-size: 13px;
-      color: var(--muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+    .nexus-sub {
+      font-size: 14px;
+      color: #64748b;
+      margin-top: 6px;
       font-weight: 500;
     }
 
-    /* Fluid Animation Sequence */
-    @keyframes revealUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* ---- RESOURCE ARCHITECTURE COSTS ---- */
+    .tier-matrix {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 24px;
     }
 
-    .hero, .metrics-bar, .section, .cta-container {
-      animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    .tier-node {
+      border: 1px solid rgba(255, 255, 255, 0.008);
     }
 
-    .hero { animation-delay: 0s; }
-    .metrics-bar { animation-delay: 0.1s; }
-    .section:nth-of-type(1) { animation-delay: 0.2s; }
-    .section:nth-of-type(2) { animation-delay: 0.3s; }
-    .section:nth-of-type(3) { animation-delay: 0.4s; }
-    .cta-container { animation-delay: 0.5s; }
+    .tier-header {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .tier-purple .tier-header { color: #c084fc; }
+    .tier-orange .tier-header { color: #fb923c; }
+
+    .tier-cost {
+      font-family: 'Syne', sans-serif;
+      font-size: 56px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+    }
+    .tier-cost span {
+      font-size: 16px;
+      color: #475569;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    .tier-paragraph {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    /* ---- AUDIO TRANSMISSIONS ---- */
+    .audio-rack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .audio-player-container {
+      border-radius: var(--radius-card);
+      background: rgba(2, 2, 4, 0.8);
+      border: 1px solid var(--border-flux);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .audio-player-container:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(6, 6, 14, 0.95);
+      transform: scale(1.008);
+    }
+
+    /* ---- ULTIMATE CONVERSION GATE ---- */
+    .terminal-cta-container {
+      padding: 120px 0 180px;
+    }
+
+    .nexus-gate-card {
+      background: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 65%), linear-gradient(135deg, rgba(8, 8, 16, 0.6) 0%, rgba(2, 2, 4, 0.85) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.015);
+      border-radius: 40px;
+      padding: 90px 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 70px 140px -50px rgba(0,0,0,0.95);
+    }
+
+    .gate-icon-shield {
+      width: 84px;
+      height: 84px;
+      background: rgba(168, 85, 247, 0.02);
+      border: 1px solid rgba(168, 85, 247, 0.18);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 40px;
+      color: var(--neon-purple);
+      box-shadow: 0 16px 44px rgba(168, 85, 247, 0.1);
+    }
+
+    .gate-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: 46px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+
+    .gate-body-text {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .business-comms-node {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 12px 28px;
+      border-radius: 16px;
+      margin-bottom: 44px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      letter-spacing: 0.5px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .business-comms-node svg {
+      color: var(--neon-blue);
+    }
+
+    .gate-trigger-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #00599e 0%, #003761 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 22px 48px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 18px 36px rgba(0, 55, 97, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .gate-trigger-button:hover {
+      background: linear-gradient(135deg, #006ec4 0%, #004375 100%);
+      transform: translateY(-6px);
+      box-shadow: 0 28px 56px rgba(0, 55, 97, 0.6);
+    }
+
+    /* ---- FOOTER OVERLAY ---- */
+    .global-footer {
+      text-align: center;
+      padding: 64px;
+      font-size: 13px;
+      color: #475569;
+      border-top: 1px solid rgba(255, 255, 255, 0.008);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* Pure Kinematic Reveal Engines */
+    @keyframes kinematicReveal {
+      from { opacity: 0; transform: translateY(60px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero-panel, .cluster-grid, .module-wrapper, .terminal-cta-container {
+      animation: kinematicReveal 1.4s cubic-bezier(0.15, 0.95, 0.2, 1) both;
+    }
+
+    .hero-panel { animation-delay: 0s; }
+    .cluster-grid { animation-delay: 0.05s; }
+    .module-wrapper:nth-of-type(1) { animation-delay: 0.1s; }
+    .module-wrapper:nth-of-type(2) { animation-delay: 0.15s; }
+    .module-wrapper:nth-of-type(3) { animation-delay: 0.2s; }
+    .module-wrapper:nth-of-type(4) { animation-delay: 0.25s; }
+    .terminal-cta-container { animation-delay: 0.3s; }
   </style>
 </head>
 <body>
 
-  <div class="bg-system">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+  <div class="quantum-canvas">
+    <div class="digital-mesh"></div>
   </div>
 
-  <main class="container">
+  <main class="viewport">
     
-    <header class="hero">
-      <div class="badge-hub">
-        <span>Systems Engineer</span>
-        <div class="pulse-tag">Available for Hire</div>
+    <nav class="global-nav">
+      <a href="#" class="nav-logo">N<span>L</span>M</a>
+      <ul class="nav-links">
+        <li><a href="#deployments">Deployments</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#rates">Rates</a></li>
+        <li><a href="#audio">Audio</a></li>
+      </ul>
+    </nav>
+    
+    <header class="hero-panel">
+      <div class="system-terminal-status">
+        <div class="status-node"></div>
+        <div class="status-string">Absolute Infinite Architecture Engaged</div>
       </div>
-      <h1 class="hero-title">
-        <span>No</span><span class="accent">Limit</span><span>Melon</span>
+      <h1 class="main-signature">
+        <span class="base-text">No</span><span class="glowing-core">Limit</span><span class="base-text">Melon</span>
       </h1>
-      <p class="hero-desc">Deploying robust system configurations and low-latency infrastructure for high-scale Minecraft networks.</p>
+      <p class="field-descriptor">Engineering low-latency architecture for applications that cannot afford to sleep.</p>
+      <p class="philosophy-subline">"I make things look simple, even when the logic underneath is brutally complex."</p>
     </header>
 
-    <div class="metrics-bar">
-      <div>
-        <div class="metric-val">8</div>
-        <div class="metric-lbl">Deployments</div>
+    <div class="cluster-grid">
+      <div class="hub-node">
+        <div class="hub-number">08</div>
+        <div class="hub-meta">Environments</div>
       </div>
-      <div style="border-left: 1px solid rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.04);">
-        <div class="metric-val">1<span>+</span></div>
-        <div class="metric-lbl">Active Networks</div>
+      <div class="hub-node">
+        <div class="hub-number colored">01</div>
+        <div class="hub-meta">Live Target</div>
       </div>
-      <div>
-        <div class="metric-val">99.9<span>%</span></div>
-        <div class="metric-lbl">Target Uptime</div>
+      <div class="hub-node">
+        <div class="hub-number">99.9%</div>
+        <div class="hub-meta">Uptime Index</div>
+      </div>
+      <div class="hub-node">
+        <div class="hub-number">2026</div>
+        <div class="hub-meta">Temporal Matrix</div>
       </div>
     </div>
 
-    <section class="section">
-      <h2 class="section-title">Network Deployments</h2>
-
-      <div class="showcase-grid">
-        <div class="card-panel owner-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="status-pill inactive">Inactive</div>
+    <section class="module-wrapper" id="capabilities">
+      <h2 class="module-header">Architectural Discipline</h2>
+      <div class="pipeline-grid">
+        <div class="pipeline-card">
+          <div class="pipeline-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
           </div>
-          <h3 class="card-body-title">ReefSMP</h3>
-          <p class="card-body-role">Network Owner</p>
+          <h3 class="pipeline-title">Infrastructure Scale</h3>
+          <p class="pipeline-desc">Optimizing garbage collection profiles and kernel parameters for seamless asynchronous runtime loads.</p>
         </div>
-
-        <div class="card-panel owner-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="status-pill inactive">Inactive</div>
+        <div class="pipeline-card">
+          <div class="pipeline-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
           </div>
-          <h3 class="card-body-title">AtomicPVP</h3>
-          <p class="card-body-role">Network Owner</p>
+          <h3 class="pipeline-title">Custom Plugin Cores</h3>
+          <p class="pipeline-desc">Compiling rigorous thread-safe systems built natively for heavy database operations and player event concurrency.</p>
         </div>
-
-        <div class="card-panel dev-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <div class="status-pill inactive">Inactive</div>
+        <div class="pipeline-card">
+          <div class="pipeline-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h3 class="card-body-title">MintySMP</h3>
-          <p class="card-body-role">Systems Developer</p>
-        </div>
-
-        <div class="card-panel dev-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <div class="status-pill inactive">Inactive</div>
-          </div>
-          <h3 class="card-body-title">TrimSMP</h3>
-          <p class="card-body-role">Systems Developer</p>
-        </div>
-
-        <div class="card-panel dev-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <div class="status-pill inactive">Inactive</div>
-          </div>
-          <h3 class="card-body-title">CookieBox</h3>
-          <p class="card-body-role">Systems Developer</p>
-        </div>
-
-        <div class="card-panel owner-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="status-pill inactive">Inactive</div>
-          </div>
-          <h3 class="card-body-title">TotemRush</h3>
-          <p class="card-body-role">Network Owner</p>
-        </div>
-
-        <div class="card-panel owner-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="status-pill inactive">Inactive</div>
-          </div>
-          <h3 class="card-body-title">SeaSMP</h3>
-          <p class="card-body-role">Network Owner</p>
-        </div>
-
-        <div class="card-panel dev-type">
-          <div class="card-header-meta">
-            <div class="server-icon-frame">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <div class="status-pill active">Active</div>
-          </div>
-          <h3 class="card-body-title">HypeMc</h3>
-          <p class="card-body-role">Systems Developer</p>
+          <h3 class="pipeline-title">Network Hardening</h3>
+          <p class="pipeline-desc">Configuring absolute proxy gates and packet filters to maintain structural integrity under vector threats.</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title">Rate Architecture</h2>
+    <section class="module-wrapper" id="deployments">
+      <h2 class="module-header">Production Environment Index</h2>
+
+      <div class="network-matrix">
+        <div class="nexus-card owner-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="live-indicator offline">Offline</div>
+          </div>
+          <h3 class="nexus-title">ReefSMP</h3>
+          <p class="nexus-sub">Network Proprietor</p>
+        </div>
+
+        <div class="nexus-card owner-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="live-indicator offline">Offline</div>
+          </div>
+          <h3 class="nexus-title">AtomicPVP</h3>
+          <p class="nexus-sub">Network Proprietor</p>
+        </div>
+
+        <div class="nexus-card dev-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="live-indicator offline">Offline</div>
+          </div>
+          <h3 class="nexus-title">MintySMP</h3>
+          <p class="nexus-sub">Systems Architect</p>
+        </div>
+
+        <div class="nexus-card dev-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="live-indicator offline">Offline</div>
+          </div>
+          <h3 class="nexus-title">TrimSMP</h3>
+          <p class="nexus-sub">Systems Architect</p>
+        </div>
+
+        <div class="nexus-card dev-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="live-indicator offline">Offline</div>
+          </div>
+          <h3 class="nexus-title">CookieBox</h3>
+          <p class="nexus-sub">Systems Architect</p>
+        </div>
+
+        <div class="nexus-card owner-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="live-indicator offline">Offline</div>
+          </div>
+          <h3 class="nexus-title">TotemRush</h3>
+          <p class="nexus-sub">Network Proprietor</p>
+        </div>
+
+        <div class="nexus-card owner-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="live-indicator offline">Offline</div>
+          </div>
+          <h3 class="nexus-title">SeaSMP</h3>
+          <p class="nexus-sub">Network Proprietor</p>
+        </div>
+
+        <div class="nexus-card dev-variant">
+          <div class="nexus-top-row">
+            <div class="nexus-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="live-indicator online">Active</div>
+          </div>
+          <h3 class="nexus-title">HypeMc</h3>
+          <p class="nexus-sub">Systems Architect</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-wrapper" id="rates">
+      <h2 class="module-header">Resource Allocation Tiers</h2>
       
-      <div class="pricing-matrix">
-        <div class="card-panel price-node p-purple">
-          <div class="tier-scope">Full Setup</div>
-          <div class="amt">$40</div>
-          <p class="desc">Initial production setup and core optimization tuning.</p>
+      <div class="tier-matrix">
+        <div class="nexus-card tier-node tier-purple">
+          <div class="tier-header">Initialization</div>
+          <div class="tier-cost">$40</div>
+          <p class="tier-paragraph">Production-grade builds, core resource allocation presets, and optimization profiles.</p>
         </div>
 
-        <div class="card-panel price-node p-purple">
-          <div class="tier-scope">Sysadmin</div>
-          <div class="amt">$10<span>/mo</span></div>
-          <p class="desc">Regular security patching, maintenance, and analytics oversight.</p>
+        <div class="nexus-card tier-node tier-purple">
+          <div class="tier-header">Administration</div>
+          <div class="tier-cost">$10<span>/mo</span></div>
+          <p class="tier-paragraph">Continuous security validation, log management, and diagnostic monitoring.</p>
         </div>
 
-        <div class="card-panel price-node p-orange">
-          <div class="tier-scope">Plugin Pro</div>
-          <div class="amt">$5</div>
-          <p class="desc">Light structural integrations or modular adjustments.</p>
+        <div class="nexus-card tier-node tier-orange">
+          <div class="tier-header">Logic Module</div>
+          <div class="tier-cost">$5</div>
+          <p class="tier-paragraph">Discrete modular components or lightweight custom plugin integrations.</p>
         </div>
 
-        <div class="card-panel price-node p-orange">
-          <div class="tier-scope">Plugin Core</div>
-          <div class="amt">$30</div>
-          <p class="desc">Large architecture custom plugin designs tailored to scale.</p>
+        <div class="nexus-card tier-node tier-orange">
+          <div class="tier-header">Logic Core</div>
+          <div class="tier-cost">$30</div>
+          <p class="tier-paragraph">High-capacity system plugins engineered natively for network performance scale.</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title">Atmospheric Radio</h2>
-      <div class="stream-stack">
-        <iframe class="stream-player" src="https://open.spotify.com/embed/track/55wlsNYqcfiQsHuX8l0jmF?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <iframe class="stream-player" src="https://open.spotify.com/embed/track/6J71OQe9YJT7meQxi6K2IY?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <iframe class="stream-player" src="https://open.spotify.com/embed/track/7LP0zDJy9ydhaVR5Eurt1e?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <section class="module-wrapper" id="audio">
+      <h2 class="module-header">Acoustic Transmissions</h2>
+      <div class="audio-rack">
+        <iframe class="audio-player-container" src="https://open.spotify.com/embed/track/55wlsNYqcfiQsHuX8l0jmF?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe class="audio-player-container" src="https://open.spotify.com/embed/track/6J71OQe9YJT7meQxi6K2IY?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe class="audio-player-container" src="https://open.spotify.com/embed/track/7LP0zDJy9ydhaVR5Eurt1e?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </section>
 
-    <section class="cta-container">
-      <div class="ultra-card">
-        <div class="cta-icon-wrapper">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<section class="terminal-cta-container">
+      <div class="nexus-gate-card">
+        <div class="gate-icon-shield">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/>
             <path d="M12 12h.01"/>
             <path d="M17 7V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2"/>
           </svg>
         </div>
-        <h2 class="cta-title">Initiate a Build Order</h2>
-        <p class="cta-text">Acquire reliable performance metrics and pristine custom logic builds for your server network today.</p>
-        <a class="action-gate" href="https://www.paypal.com/paypalme/pineapplecode153" target="_blank" rel="noopener">
+        <h2 class="gate-headline">Initiate Infrastructure Task</h2>
+        <p class="gate-body-text">Initialize premium system logic configurations, low-latency cluster architecture, or secure custom module development pools today.</p>
+        
+        <div class="business-comms-node" style="display: flex; align-items: center; font-family: sans-serif; color: #333333; margin-bottom: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 4px; vertical-align: middle;">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+1 (904) 723-8127</span>
+        </div>
+
+        <div class="business-comms-node" style="display: flex; align-items: center; font-family: sans-serif; color: #333333;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 4px; vertical-align: middle;">
+            <path d="M22 4H2v16h20V4z" />
+            <path d="M22 4l-10 7L2 4" />
+          </svg>
+          <span>pineapplecode3@gmail.com</span>
+        </div>
+      </div>
+    </section>
+        <a class="gate-trigger-button" href="https://www.paypal.com/paypalme/pineapplecode153" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.076 21.337H3.97a.641.641 0 0 1-.633-.74L5.5 3.667a.773.773 0 0 1 .764-.657h6.286c2.176 0 3.73.448 4.615 1.332.848.849 1.093 2.01.729 3.452-.028.114-.057.228-.09.344C17.168 10.7 15.5 12 12.5 12H9.5l-.763 4.997-.661 4.34Z" opacity="0.6"/>
             <path d="M19.435 8.57c-.05.302-.117.615-.203.942C18.18 13.3 15.8 14.5 12.3 14.5H10.5l-1 6.5h3.076a.641.641 0 0 0 .633-.74l.027-.15.504-3.19.032-.174a.641.641 0 0 1 .633-.556h.399c2.583 0 4.606-1.05 5.196-4.086.247-1.27.12-2.33-.565-3.074Z"/>
           </svg>
-          Secure Session via PayPal
+          Authenticate Secure Session
         </a>
       </div>
     </section>
 
   </main>
 
-  <footer class="master-footer">
-    © 2026 NoLimitMelon · Architecture Matrix Registered
+  <footer class="global-footer">
+    © 2026 NoLimitMelon · System Architecture Matrix Fully Calibrated
   </footer>
 
 </body>
