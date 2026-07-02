@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NoLimitMelon — Nexus Core Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-core: #010103;
+      --surface-glass: rgba(6, 6, 12, 0.45);
+      --surface-glass-hover: rgba(12, 12, 24, 0.7);
+      --border-flux: rgba(255, 255, 255, 0.015);
+      --border-flux-hover: rgba(168, 85, 247, 0.55);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      
+      /* Pure Luminescent Spectrum */
+      --neon-purple: #a855f7;
+      --neon-purple-glow: rgba(168, 85, 247, 0.6);
+      --neon-orange: #f97316;
+      --neon-orange-glow: rgba(249, 115, 22, 0.6);
+      --neon-emerald: #10b981;
+      --neon-emerald-glow: rgba(16, 185, 129, 0.65);
+      --neon-blue: #3b82f6;
+      
+      --radius-card: 28px;
+    }
+
+    html, body {
+      background: var(--bg-core);
+      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background Quantum Canvas */
+    .quantum-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .quantum-canvas::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 50% -40%, rgba(168, 85, 247, 0.25) 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+      filter: blur(60px);
+    }
+
+    .viewport {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header styling */
+    .admin-header {
+      margin-bottom: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-title h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    .admin-title h1 span {
+      background: linear-gradient(135deg, var(--neon-purple) 0%, #f5f3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .admin-title p {
+      color: var(--text-secondary);
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .secure-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.05);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #34d399;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--neon-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--neon-emerald);
+    }
+
+    /* Grid Layout for controls */
+    .control-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .control-card {
+      background: var(--surface-glass);
+      border: 1px solid var(--border-flux);
+      border-radius: var(--radius-card);
+      padding: 40px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: border-color 0.4s ease;
+    }
+
+    .control-card:hover {
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .card-icon {
+      margin-bottom: 24px;
+      display: inline-flex;
+      padding: 14px;
+      border-radius: 16px;
+    }
+
+    .sale-variant .card-icon { color: var(--neon-orange); background: rgba(249, 115, 22, 0.06); }
+    .announcement-variant .card-icon { color: var(--neon-purple); background: rgba(168, 85, 247, 0.06); }
+
+    .control-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    /* Input Styling */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #64748b;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 16px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--neon-purple);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Dynamic Dropdown Select box styling */
+    select.form-control {
+      appearance: none;
+      cursor: pointer;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sale-variant .submit-btn {
+      background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+      box-shadow: 0 12px 24px rgba(249, 115, 22, 0.2);
+    }
+    .sale-variant .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(249, 115, 22, 0.35);
+    }
+
+    .announcement-variant .submit-btn {
+      background: linear-gradient(135deg, #a855f7 0%, #6b21a8 100%);
+      box-shadow: 0 12px 24px rgba(168, 85, 247, 0.2);
+    }
+    .announcement-variant .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(168, 85, 247, 0.35);
+    }
+
+    /* Animated entry */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .control-card { animation: slideUp 1s cubic-bezier(0.15, 0.95, 0.2, 1) both; }
+    .control-card:nth-child(2) { animation-delay: 0.1s; }
+  </style>
+</head>
+<body>
+
+  <div class="quantum-canvas"></div>
+
+  <main class="viewport">
+    
+    <header class="admin-header">
+      <div class="admin-title">
+        <h1><span>Nexus</span> Core Console</h1>
+        <p>Production Environment Oversight & Logic Interfacing</p>
+      </div>
+      <div class="secure-badge">
+        <div class="badge-dot"></div>
+        IP Gateway Calibrated
+      </div>
+    </header>
+
+    <div class="control-grid">
+      
+      <section class="control-card sale-variant">
+        <div class="card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <h2>Global Rate Modulation</h2>
+        
+        <form onsubmit="event.preventDefault(); alert('Modulation updated in state matrix.');">
+          <div class="form-group">
+            <label>Target Environment / Product</label>
+            <select class="form-control">
+              <option>All Assets (Global Sale)</option>
+              <option>Initialization Profile ($40 Tier)</option>
+              <option>Administration Layer ($10/mo Tier)</option>
+              <option>Logic Module ($5 Tier)</option>
+              <option>Logic Core ($30 Tier)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Modulation Scale (Discount %)</label>
+            <input type="number" class="form-control" placeholder="e.g. 25" min="0" max="100" />
+          </div>
+
+          <div class="form-group">
+            <label>Temporal Expiration (End Date)</label>
+            <input type="date" class="form-control" />
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Deploy Rate Shift
+          </button>
+        </form>
+      </section>
+
+      <section class="control-card announcement-variant">
+        <div class="card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+        </div>
+        <h2>Broadcast Matrix Logic</h2>
+        
+        <form onsubmit="event.preventDefault(); alert('Transmission broadcasted down-link.');">
+          <div class="form-group">
+            <label>Transmission Header / Title</label>
+            <input type="text" class="form-control" placeholder="Network Maintenance, New Features, etc..." />
+          </div>
+
+          <div class="form-group">
+            <label>Severity Vector</label>
+            <select class="form-control">
+              <option>Standard (Blue Light)</option>
+              <option>Promotional Glow (Purple Flash)</option>
+              <option>Critical Override (Emerald Pulse)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Broadcast Body Data</label>
+            <textarea class="form-control" placeholder="Compile text architecture or update specs here..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Publish Transmission
+          </button>
+        </form>
+      </section>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
