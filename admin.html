@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NoLimitMelon — Nexus Core Control</title>
+  <title>ArchiveMelon — Administrative Control Center</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
@@ -13,232 +13,175 @@
     :root {
       --bg-core: #010103;
       --surface-glass: rgba(6, 6, 12, 0.45);
-      --surface-glass-hover: rgba(12, 12, 24, 0.7);
-      --border-flux: rgba(255, 255, 255, 0.015);
+      --border-flux: rgba(255, 255, 255, 0.04);
       --border-flux-hover: rgba(168, 85, 247, 0.55);
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
       
-      /* Pure Luminescent Spectrum */
       --neon-purple: #a855f7;
-      --neon-purple-glow: rgba(168, 85, 247, 0.6);
+      --neon-purple-glow: rgba(168, 85, 247, 0.4);
       --neon-orange: #f97316;
-      --neon-orange-glow: rgba(249, 115, 22, 0.6);
       --neon-emerald: #10b981;
-      --neon-emerald-glow: rgba(16, 185, 129, 0.65);
       --neon-blue: #3b82f6;
       
-      --radius-card: 28px;
+      --radius-card: 24px;
     }
 
-    html, body {
+    body {
       background: var(--bg-core);
       color: var(--text-primary);
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
+      padding-bottom: 80px;
     }
 
-    /* Background Quantum Canvas */
+    /* Background Aesthetics */
     .quantum-canvas {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
     }
-
     .quantum-canvas::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image: 
-        radial-gradient(circle at 50% -40%, rgba(168, 85, 247, 0.25) 0%, transparent 60%),
-        radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 10% 10%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
       filter: blur(60px);
     }
 
     .viewport {
-      max-width: 1240px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 40px;
+      padding: 40px 20px;
       position: relative;
       z-index: 1;
     }
 
-    /* Header styling */
-    .admin-header {
-      margin-bottom: 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* Header */
+    header {
+      margin-bottom: 50px;
+      text-align: center;
     }
-
-    .admin-title h1 {
+    .admin-logo {
       font-family: 'Syne', sans-serif;
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 800;
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
     }
-
-    .admin-title h1 span {
-      background: linear-gradient(135deg, var(--neon-purple) 0%, #f5f3ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .admin-title p {
+    .admin-logo span { color: var(--neon-purple); }
+    .admin-subtitle {
       color: var(--text-secondary);
-      margin-top: 6px;
       font-size: 14px;
-    }
-
-    .secure-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(16, 185, 129, 0.05);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      padding: 10px 20px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #34d399;
-      text-transform: uppercase;
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--neon-emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--neon-emerald);
-    }
-
-    /* Grid Layout for controls */
+    /* Grid Layout */
     .control-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 32px;
     }
+    @media (min-width: 768px) {
+      .control-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 
-    .control-card {
+    /* Cards */
+    .panel-card {
       background: var(--surface-glass);
       border: 1px solid var(--border-flux);
       border-radius: var(--radius-card);
-      padding: 40px;
+      padding: 32px;
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      transition: border-color 0.4s ease;
     }
 
-    .control-card:hover {
-      border-color: rgba(255, 255, 255, 0.06);
-    }
-
-    .card-icon {
-      margin-bottom: 24px;
-      display: inline-flex;
-      padding: 14px;
-      border-radius: 16px;
-    }
-
-    .sale-variant .card-icon { color: var(--neon-orange); background: rgba(249, 115, 22, 0.06); }
-    .announcement-variant .card-icon { color: var(--neon-purple); background: rgba(168, 85, 247, 0.06); }
-
-    .control-card h2 {
+    .panel-title {
       font-family: 'Syne', sans-serif;
-      font-size: 24px;
-      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    /* Input Styling */
+    /* Forms */
     .form-group {
       margin-bottom: 20px;
     }
-
     .form-group label {
       display: block;
       font-size: 12px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #64748b;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
       margin-bottom: 8px;
-      font-weight: 700;
     }
-
-    .form-control {
+    
+    input, select, textarea {
       width: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 14px;
-      padding: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
       color: #fff;
       font-family: inherit;
       font-size: 14px;
       transition: all 0.3s ease;
     }
-
-    .form-control:focus {
+    input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--neon-purple);
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(255, 255, 255, 0.05);
     }
+    textarea { height: 100px; resize: none; }
 
-    textarea.form-control {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    /* Dynamic Dropdown Select box styling */
-    select.form-control {
-      appearance: none;
-      cursor: pointer;
-    }
-
-    /* Submit Button */
-    .submit-btn {
+    /* Action Elements */
+    .btn-action {
       width: 100%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: linear-gradient(135deg, var(--neon-purple) 0%, #7c3aed 100%);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
       font-size: 15px;
       font-weight: 600;
-      color: #fff;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px var(--neon-purple-glow);
+    }
+    .btn-reset {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 12px;
+    }
+    .btn-reset:hover {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: #ef4444;
+      color: #ef4444;
     }
 
-    .sale-variant .submit-btn {
-      background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
-      box-shadow: 0 12px 24px rgba(249, 115, 22, 0.2);
+    /* Quick Links Button */
+    .nav-btn {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
-    .sale-variant .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 36px rgba(249, 115, 22, 0.35);
-    }
-
-    .announcement-variant .submit-btn {
-      background: linear-gradient(135deg, #a855f7 0%, #6b21a8 100%);
-      box-shadow: 0 12px 24px rgba(168, 85, 247, 0.2);
-    }
-    .announcement-variant .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 36px rgba(168, 85, 247, 0.35);
-    }
-
-    /* Animated entry */
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .control-card { animation: slideUp 1s cubic-bezier(0.15, 0.95, 0.2, 1) both; }
-    .control-card:nth-child(2) { animation-delay: 0.1s; }
+    .nav-btn:hover { color: #fff; }
   </style>
 </head>
 <body>
@@ -246,33 +189,24 @@
   <div class="quantum-canvas"></div>
 
   <main class="viewport">
-    
-    <header class="admin-header">
-      <div class="admin-title">
-        <h1><span>Nexus</span> Core Console</h1>
-        <p>Production Environment Oversight & Logic Interfacing</p>
-      </div>
-      <div class="secure-badge">
-        <div class="badge-dot"></div>
-        IP Gateway Calibrated
-      </div>
+    <a href="index.html" class="nav-btn">← Back to Live Matrix</a>
+
+    <header>
+      <div class="admin-logo"><span>A</span>M Console</div>
+      <div class="admin-subtitle">Oversight Command Node</div>
     </header>
 
     <div class="control-grid">
       
-      <section class="control-card sale-variant">
-        <div class="card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="12" y1="1" x2="12" y2="23"></line>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-          </svg>
-        </div>
-        <h2>Global Rate Modulation</h2>
-        
-        <form onsubmit="event.preventDefault(); alert('Modulation updated in state matrix.');">
+      <section class="panel-card">
+        <h2 class="panel-title" style="color: var(--neon-orange);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Rate Modification Matrix
+        </h2>
+        <form id="sales-form">
           <div class="form-group">
-            <label>Target Environment / Product</label>
-            <select class="form-control">
+            <label>Target Asset Node</label>
+            <select id="sale-target">
               <option>All Assets (Global Sale)</option>
               <option>Initialization Profile ($40 Tier)</option>
               <option>Administration Layer ($10/mo Tier)</option>
@@ -280,61 +214,79 @@
               <option>Logic Core ($30 Tier)</option>
             </select>
           </div>
-          
           <div class="form-group">
-            <label>Modulation Scale (Discount %)</label>
-            <input type="number" class="form-control" placeholder="e.g. 25" min="0" max="100" />
+            <label>Discount Scale Value (%)</label>
+            <input type="number" id="sale-amount" placeholder="e.g. 25" min="1" max="99" required />
           </div>
-
-          <div class="form-group">
-            <label>Temporal Expiration (End Date)</label>
-            <input type="date" class="form-control" />
-          </div>
-
-          <button type="submit" class="submit-btn">
-            Deploy Rate Shift
-          </button>
+          <button type="submit" class="btn-action">Deploy Rate Scaling</button>
+          <button type="button" id="reset-sales" class="btn-action btn-reset">Wipe Active Sales</button>
         </form>
       </section>
 
-      <section class="control-card announcement-variant">
-        <div class="card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-          </svg>
-        </div>
-        <h2>Broadcast Matrix Logic</h2>
-        
-        <form onsubmit="event.preventDefault(); alert('Transmission broadcasted down-link.');">
+      <section class="panel-card">
+        <h2 class="panel-title" style="color: var(--neon-purple);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0M2 10h1M21 10h1M4.22 4.22l.7.7M19.08 4.22l-.7.7M12 2v1M12 18H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-3"/></svg>
+          Broadcast Terminal
+        </h2>
+        <form id="announcement-form">
           <div class="form-group">
-            <label>Transmission Header / Title</label>
-            <input type="text" class="form-control" placeholder="Network Maintenance, New Features, etc..." />
+            <label>Transmission Header / Tag</label>
+            <input type="text" id="announcement-title" placeholder="e.g. System Update" required />
           </div>
-
           <div class="form-group">
-            <label>Severity Vector</label>
-            <select class="form-control">
-              <option>Standard (Blue Light)</option>
+            <label>Luminescent Priority Spectrum</label>
+            <select id="announcement-severity">
               <option>Promotional Glow (Purple Flash)</option>
               <option>Critical Override (Emerald Pulse)</option>
             </select>
           </div>
-          
           <div class="form-group">
-            <label>Broadcast Body Data</label>
-            <textarea class="form-control" placeholder="Compile text architecture or update specs here..."></textarea>
+            <label>Transmission Log / Body Content</label>
+            <textarea id="announcement-body" placeholder="Enter broadcast text array..." required></textarea>
           </div>
-
-          <button type="submit" class="submit-btn">
-            Publish Transmission
-          </button>
+          <button type="submit" class="btn-action">Push System Broadcast</button>
+          <button type="button" id="reset-announcement" class="btn-action btn-reset">Clear Broadcast Stream</button>
         </form>
       </section>
 
     </div>
-
   </main>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // Handle Rate Adjustment Changes
+      document.getElementById("sales-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const target = document.getElementById("sale-target").value;
+        const amount = document.getElementById("sale-amount").value;
+        
+        localStorage.setItem("nlm_active_sale", JSON.stringify({ target, amount }));
+        alert("Global rate adjustments written to database parameters.");
+      });
+
+      document.getElementById("reset-sales").addEventListener("click", () => {
+        localStorage.removeItem("nlm_active_sale");
+        alert("Active price modulations purged completely.");
+      });
+
+      // Handle Broadcast System Changes
+      document.getElementById("announcement-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.getElementById("announcement-title").value;
+        const severity = document.getElementById("announcement-severity").value;
+        const body = document.getElementById("announcement-body").value;
+        
+        localStorage.setItem("nlm_active_announcement", JSON.stringify({ title, severity, body }));
+        alert("System broadcast metrics injected into timeline pipeline.");
+      });
+
+      document.getElementById("reset-announcement").addEventListener("click", () => {
+        localStorage.removeItem("nlm_active_announcement");
+        alert("Broadcast stream disabled across client networks.");
+      });
+
+    });
+  </script>
 </body>
 </html>
